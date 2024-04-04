@@ -35,41 +35,37 @@ Hardware – PCs, Cyclone II , USB flasher
 
 /* Program to implement the given logic function and to verify its operations in quartus using Verilog programming. 
 
-```
-Developed by: ILAIYADEEPAN K
-RegisterNumber: 212223230080
-```
-
+Developed by:ILAIYADEEPAN K
+RegisterNumber:212223230080
+*/
 
 ```
-module booleanmini(A,B,C,D,W,X,Y,Z,F1,F2);
-input A,B,C,D,W,X,Y,Z;
-wire x1,x2,x3,x4,x5,x6,x7,x8,x9,x10;
-output F1,F2;
-assign x1=(~A)&(~B)&(~C)&(~D);
-assign x2=(A)&(~C)&(~D);
-assign x3=(~B)&(C)&(~D);
-assign x4=(~A)&(B)&(C)&(D);
-assign x5=(B)&(~C)&(D);
-assign x6=(X)&(~Y)&(Z);
-assign x7=(~X)&(~Y)&(Z);
-assign x8=(~W)&(X)&(Y);
-assign x9=(W)&(~X)&(Y);
-assign x10=(W)&(X)&(Y);
-assign F1=x1|x2|x3|x4|x5;
-assign F2=x6|x7|x8|x9|x10;
-endmodule 
-
+module BMf1f2(a,b,c,d,w,x,y,z,f1,f2);
+input a,b,c,d,w,x,y,z;
+output f1,f2;
+wire adash,bdash,cdash,ddash,ydash,p,q,r,s,t,u;
+not(adash,a);
+not(bdash,b);
+not(cdash,c);
+not(ddash,d);
+and(p,bdash,ddash);
+and(q,adash,b,d);
+and(r,a,b,cdash);
+or(f1,p,q,r);
+//type code for f2 as like f1
+not(ydash,y);
+and(s,x,y);
+and(t,ydash,z);
+and(u,w,y);
+or(f2,s,t,u);
+endmodule
 ```
-
-**RTL realization**
-![alt text](<Screenshot (47).png>)
 
 **Output:**
+![image](https://github.com/23007232/BOOLEAN_FUNCTION_MINIMIZATION/assets/139115574/86644ec5-ea87-4a38-abc3-0a852b7a7efe)
 
-**RTL**
-![alt text](<Screenshot (46).png>)
-
+**Timing Diagram**
+![image](https://github.com/23007232/BOOLEAN_FUNCTION_MINIMIZATION/assets/139115574/b8670aa6-b67b-4e42-90ee-d2835266e649)
 
 **Result:**
 
